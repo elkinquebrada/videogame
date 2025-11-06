@@ -3,6 +3,7 @@ from sprite import Sprite
 from player import Player
 from physics import Body
 from teleporter import Teleporter
+from animator import Animator
 
 entity_factories = [
 
@@ -11,6 +12,7 @@ entity_factories = [
 #===================================
     # 0 - Jugador
     lambda args:Entity(Player(movement_speed=50), 
+    Animator('assets/Character', scale_factor=1.0),
     Sprite("assets/Character/Idle/Front.png", base_scale=0.1, depth_scale=True),
     Body(50,50,16,16)),
 
@@ -36,30 +38,30 @@ entity_factories = [
     Body()),
 
     # 6 - Iluminación1
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light1.png", base_scale=0.1, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light1.png", base_scale=0.15, depth_scale=True, draw_order_override=961),
     Body()),
 
     # 7 - Iluminación2
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light2.png", base_scale=0.35, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light2.png", base_scale=0.18, depth_scale=True),
     Body()),
 
     # 8 - Iluminación3
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light3.png", base_scale=0.35, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light3.png", base_scale=0.35, depth_scale=True, draw_order_override=701),
     Body()),
 
     # 9 - Iluminación4
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light4.png", base_scale=0.35, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_light4.png", base_scale=0.15, depth_scale=True, draw_order_override=1051),
     Body()),
     # 10 - Radio
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_radio.png", base_scale=0.15, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_radio.png", base_scale=0.13, depth_scale=True, draw_order_override=961),
     Body()),
 
     # 11 - Cerveza
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_beer.png", base_scale=0.1, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_beer.png", base_scale=0.1, depth_scale=True, draw_order_override=1051),
     Body()),
 
     # 12 - Cartel caza sombras
-    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_poster.png", base_scale=0.1, depth_scale=True),
+    lambda args: Entity(Sprite("assets/Background/Tavern/tavern_poster.png", base_scale=0.08, depth_scale=True, draw_order_override=601),
     Body()),
 
     # 13 Teletransportación a Villa
@@ -79,7 +81,8 @@ entity_factories = [
 #===================================
 
     # 14 - Jugador
-    lambda args:Entity(Player(movement_speed=80), 
+    lambda args:Entity(Player(movement_speed=80),
+    Animator('assets/Character', scale_factor=1.0), 
     Sprite("assets/Character/Idle/Front.png", base_scale=0.05, depth_scale=True),
     Body(50,50,16,16)),
 
@@ -115,7 +118,7 @@ entity_factories = [
             width=int(args[6]),         # 4. Ancho de la colisión (ej: 50)
             height=int(args[7])         # 5. Alto de la colisión (ej: 20)
         ), 
-        Sprite("assets/Background/Village/Village_Shop/village_shop_door.png", base_scale=0.08, depth_scale=True)
+        Sprite("assets/Background/Village/Village_Shop/village_shop_door.png", base_scale=0.08, depth_scale=True, draw_order_override=581)
     ),
 
     # 20 - Tienda/Escaleras
@@ -139,7 +142,7 @@ entity_factories = [
             width=int(args[6]),         # 4. Ancho de la colisión (ej: 50)
             height=int(args[7])         # 5. Alto de la colisión (ej: 20)
         ), 
-        Sprite("assets/Background/Village//Lumber_House/lumber_house_door.png", base_scale=0.07, depth_scale=True)
+        Sprite("assets/Background/Village//Lumber_House/lumber_house_door.png", base_scale=0.07, depth_scale=True, draw_order_override=801)
     ),
 
 ]
