@@ -163,7 +163,7 @@ entity_factories = [
             width=int(args[6]),         # 4. Ancho de la colisión (ej: 50)
             height=int(args[7])         # 5. Alto de la colisión (ej: 20)
         ), 
-        Sprite("assets/Background/Village///Forest_gate_door.png", base_scale=0.07, depth_scale=True, draw_order_override=801)
+        Sprite("assets/Background/Village///forest_gate_door.png", base_scale=0.07, depth_scale=True, draw_order_override=801)
     ),
 
     #===================================
