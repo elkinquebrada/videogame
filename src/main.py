@@ -23,7 +23,7 @@ screen = create_screen(width_test, height_test, "Cuentos de mentes estrelladas")
 clear_color = (0, 0, 0)
 running = True
 
-area = Area("forest.map", tile_kinds)
+area = Area("village.map", tile_kinds)
 
 
 # Bucle de juego
