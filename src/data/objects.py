@@ -91,7 +91,7 @@ entity_factories = [
 #===================================
 
     # 15 - Jugador
-    lambda args:Entity(Player(movement_speed=80),
+    lambda args:Entity(Player(movement_speed=200),
     Animator('assets/Character', scale_factor=1.0), 
     Sprite("assets/Character/Idle/Front.png", base_scale=0.05, depth_scale=True),
     Body(50,50,16,16)),
@@ -163,7 +163,7 @@ entity_factories = [
             width=int(args[6]),         # 4. Ancho de la colisión (ej: 50)
             height=int(args[7])         # 5. Alto de la colisión (ej: 20)
         ), 
-        Sprite("assets/Background/Village///forest_gate_door.png", base_scale=0.07, depth_scale=True, draw_order_override=801)
+        Sprite("assets/Background/Village///forest_gate_door.png", base_scale=0.15, depth_scale=True, draw_order_override=0)
     ),
 
     #===================================
