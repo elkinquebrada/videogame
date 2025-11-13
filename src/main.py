@@ -15,34 +15,27 @@ import pyautogui
 
 pygame.init()
 
+print("=" * 50)
+print("🎮 INICIANDO JUEGO...")
+print("=" * 50)
+
 
 width_test, height_test = pyautogui.size()
-
-
-
-# screen = create_screen(1629, 900, "Cuentos de mentes estrelladas")
+print(f"Resolución detectada: {width_test}x{height_test}")
+ # screen = create_screen(1629, 900, "Cuentos de mentes estrelladas")
 screen = create_screen(width_test, height_test, "Cuentos de mentes estrelladas")
+print("✓ Pantalla creada")
 
 clear_color = (0, 0, 0)
 running = True
 
-area = Area("tavern.map", tile_kinds, screen)
+print("Cargando área...")
 
+area = Area("forest.map", tile_kinds, screen)
+print("Área cargada")
 
-# Bucle de juego
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == pygame.KEYDOWN:
-            input.keys_down.add(event.key)
-        elif event.type == pygame.KEYUP:
-            input.keys_down.remove(event.key)
-
-    # Update code
-    for a in active_objs:
-        a.update()
-
+print("Entrando al bucle principal...")
+ # Bucle de juego
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
