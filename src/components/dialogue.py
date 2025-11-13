@@ -15,7 +15,8 @@ class DialogueBox:
         self.line_spacing = 10
         
         # Cargar fuente
-        self.load_font()
+        self.font = None
+        self.name_font = None
         
         # Colores
         self.bg_color = (20, 20, 40, 230)  # Fondo semi-transparente
@@ -51,7 +52,7 @@ class DialogueBox:
             print(f"✗ Carpeta de fuentes no encontrada: {font_folder_path}")
         
         # Fuente predeterminada
-        print("⚠ Usando fuente predeterminada de Pygame")
+        print("Usando fuente predeterminada de Pygame")
         self.font = pygame.font.Font(None, self.font_size)
         self.name_font = pygame.font.Font(None, self.font_size + 4)
     

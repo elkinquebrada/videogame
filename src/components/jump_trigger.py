@@ -87,10 +87,15 @@ class JumpPrompt:
     """
     def __init__(self):
         self.active_prompts = []
-        self.font = pygame.font.Font(None, 32)
+        self.font = None
         self.bg_color = (20, 20, 40, 200)
         self.text_color = (255, 255, 100)
         self.border_color = (255, 255, 150)
+
+    def _init_font(self):
+        """Inicializa la fuente de forma perezosa"""
+        if self.font is None:
+            self.font = pygame.font.Font(None, 32)
     
     def add_prompt(self, text, x, y):
         """Agrega un prompt temporal"""

@@ -214,8 +214,9 @@ entity_factories = [
 
 
 ]
+
      # 35 - Trigger de salto 1 (primer vacío del bosque)
-    lambda args: Entity(
+lambda args: Entity(
         JumpTrigger(
             destination_x=int(args[3]),  # X de destino
             destination_y=int(args[4]),  # Y de destino
@@ -223,14 +224,13 @@ entity_factories = [
             y=int(args[6]) if len(args) > 6 else -25,     # Offset Y del trigger
             width=int(args[7]) if len(args) > 7 else 50,  # Ancho del trigger
             height=int(args[8]) if len(args) > 8 else 50, # Alto del trigger
-            prompt_text=args[9] if len(args) > 9 else "Presiona ESPACIO para saltar"
-        )
+            prompt_text=args[9] if len(args) > 9 else "Presiona ESPACIO para saltar")
     ),
-]
+
 
 def create_entity(id,x,y,data=None):
-    factory = entity_factories [id]
-    e = factory(data)
-    e.x = x
-    e.y = y
-    return e
+     factory = entity_factories [id]
+     e = factory(data)
+     e.x = x
+     e.y = y
+     return e

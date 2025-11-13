@@ -40,7 +40,7 @@ class Area:
         
         # Configuración de fuentes
         font_folder_path = "content/fonts"
-        custom_font_name = "tu_fuente.ttf"  # Cambia esto por tu fuente si tienes una
+        custom_font_name = "EBGaramond-VariableFont_wght.ttf"  # Cambia esto por tu fuente si tienes una
         
         # Función auxiliar para cargar fuentes de forma segura
         def load_font_safe(size):
@@ -146,8 +146,7 @@ class Area:
             
         except Exception as e:
             print(f"Error rendering text: {e}")
-        
-        # Partículas decorativas (estrellas)
+         # Partículas decorativas (estrellas)
         import random
         random.seed(int(progress * 100))  # Seed para consistencia
         for _ in range(int(progress * 20)):
@@ -163,10 +162,13 @@ class Area:
         
     def load_file(self, area_file, screen=None):
         self.reset_everything()
+
+        # Limpiar el estado de las teclas antes de cargar
+        from core import input as game_input
+        game_input.keys_down.clear()
         
         # Progreso 0%: Inicio de carga
         self.draw_loading_bar(screen, 0.0, "Iniciando carga del mundo")
-        pygame.time.delay(200)
         
         # Progreso 10%: Leer archivo
         self.draw_loading_bar(screen, 0.05, "Abriendo portal dimensional")
@@ -174,7 +176,6 @@ class Area:
         data = file.read()
         file.close()
         self.draw_loading_bar(screen, 0.15, "Datos del mundo recuperados")
-        pygame.time.delay(150)
         
         chunks = data.split('-')
         title_map_data = chunks[0]
@@ -182,11 +183,9 @@ class Area:
         
         # Progreso 30%: Cargar mapa
         self.draw_loading_bar(screen, 0.25, "Tejiendo el paisaje")
-        pygame.time.delay(100)
         self.draw_loading_bar(screen, 0.35, "Pintando el terreno")
         self.map = Map(title_map_data, self.title_types)
         self.draw_loading_bar(screen, 0.50, "Mundo materializado")
-        pygame.time.delay(150)
         
         # Progreso 50-100%: Cargar entidades
         self.entities = []
@@ -214,14 +213,20 @@ class Area:
                     message = "Colocando objetos mágicos"
                 else:
                     message = "Últimos toques de magia"
-                    
-                self.draw_loading_bar(screen, progress, f"{message} ({i+1}/{total_entities})")
+
+                if i % 5 == 0 or i == total_entities - 1:    
+                    self.draw_loading_bar(screen, progress, f"{message} ({i+1}/{total_entities})")
                 
             except Exception as e:
                 print(f"Error parsing line: {line} - {e}")
         
         # Progreso 100%: Completado
         self.draw_loading_bar(screen, 1.0, "¡El mundo está listo!")
-        pygame.time.delay(800)
+        pygame.time.delay(300)
         
         
+        game_input.keys_down.clear()
+
+        print("✓ Carga completada exitosamente!")
+        print(f"✓ Entidades cargadas: {len(self.entities)}")
+        print(f"✓ Mapa cargado: {self.map.width}x{self.map.height}") 

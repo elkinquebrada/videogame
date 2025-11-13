@@ -15,6 +15,7 @@ import pyautogui
 
 pygame.init()
 
+
 width_test, height_test = pyautogui.size()
 
 
@@ -25,7 +26,7 @@ screen = create_screen(width_test, height_test, "Cuentos de mentes estrelladas")
 clear_color = (0, 0, 0)
 running = True
 
-area = Area("Tavern.map", tile_kinds, screen)
+area = Area("tavern.map", tile_kinds, screen)
 
 
 # Bucle de juego

@@ -6,6 +6,7 @@ from core.input import is_key_pressed
 from core.camera import camera
 from components.entity import active_objs
 from components.physics import Body, triggers
+from components.jump_trigger import jump_prompt 
 
 class Player:
     def __init__(self, movement_speed=50):
